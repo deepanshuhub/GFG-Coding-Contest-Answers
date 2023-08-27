@@ -1,0 +1,79 @@
+Problem:
+
+Geek has a list of integers and a value key. He is trying to find the mean of 
+
+the element just less than or equal to the given key and
+the element just greater than or equal to the given key
+If either of them does not exist, take the value as -1. Both the values may even be the same.  
+He has recently discovered the concept of Binary Search Tree. He is curious to see if he can use BST to solve this problem. Can you help him?
+
+The mean of two numbers x and y is defined as ceil((x+y)/2).
+For example,
+if the numbers are 2 and 3 then mean is ceil(5/2) = ceil(2.5) = 3.
+Here ceil(x) denotes the smallest integer that is not smaller than x.
+
+
+Example 1:
+
+Input:
+     3
+    /  \
+   1    5
+key = 2
+Output: 2
+Explaination : 
+Here 1 is just less than 2 and
+3 is just greater than 2. 
+Required mean is (1+3)/2 = 2.
+
+Example 2:
+
+Input:
+  2
+   \
+    5
+   /  \
+ 3     7
+key = 5
+Output: 5
+Explaination : 
+Here we take both keys equal to given 
+key i.e 5 , thus mean = (5 + 5)/2 = 5
+
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function mean() which takes the root node of the tree and integer key as input parameters and returns an integer denoting the mean. 
+
+
+Constraints:
+1 <= Number of nodes <= 105
+1 <= Data of a node <= 105
+
+
+Answer:
+
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+
+class Solution:
+    def find_floor_ceiling(self, root, key, floor, ceiling):
+        if not root:
+            return floor, ceiling
+
+        if root.data == key:
+            return key, key
+
+        if root.data < key:
+            return self.find_floor_ceiling(root.right, key, root.data, ceiling)
+        else:
+            return self.find_floor_ceiling(root.left, key, floor, root.data)
+
+    def mean(self, root, key):
+        floor, ceiling = self.find_floor_ceiling(root, key, -1, -1)
+
+        if floor == -1 and ceiling == -1:
+            return -1
+        
+        return (floor + ceiling + 1) // 2
