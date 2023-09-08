@@ -11,7 +11,7 @@ Geek has a list of integers and a value key. He is trying to find the mean of
 the element just less than or equal to the given key and
 the element just greater than or equal to the given key
 If either of them does not exist, take the value as -1. Both the values may even be the same.  
-He has recently discovered the concept of Binary Search Tree. He is curious to see if he can use BST to solve this problem. Can you help him?.
+He has recently discovered the concept of Binary Search Tree. He is curious to see if he can use BST to solve this problem. Can you help him?
 
 The mean of two numbers x and y is defined as ceil((x+y)/2).
 For example,
